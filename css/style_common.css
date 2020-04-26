@@ -1,8 +1,8 @@
 .view {
    width: 360px;
-   height: 260px;
-   margin: 10px;
-   float: left;
+   height: 560px;
+   margin: 50px;
+   float: center;
    overflow: hidden;
    position: relative;
    text-align: center;
@@ -14,7 +14,7 @@
 }
 .view .mask,.view .content {
    width: 360px;
-   height: 260px;
+   height: 560px;
    position: absolute;
    overflow: hidden;
    top: 0;
