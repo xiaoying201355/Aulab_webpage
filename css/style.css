@@ -2784,7 +2784,7 @@ td.add-check a {
 
 .view {
    width: 360px;
-   height: 260px;
+   height: 460px;
    margin: 10px;
    float: left;
    overflow: hidden;
@@ -2798,7 +2798,7 @@ td.add-check a {
 }
 .view .mask,.view .content {
    width: 360px;
-   height: 260px;
+   height: 460px;
    position: absolute;
    overflow: hidden;
    top: 0;
@@ -2846,7 +2846,7 @@ td.add-check a {
     height: 212px;
 }
 .view .mask, .view .content {
-    width:293px;
+    width:350px;
     height:212px;
 }
 .view h3 {
