@@ -111,6 +111,7 @@
             <li><a href="#identifier1">Operation manual for identfiy novel gene and isoform based on Pacbio data</a></li>
             <li><a href="#identifier2">MeSMLR-seq followup: Nanopore PromethION</a></li>
             <li><a href="#identifier3">Sequencing data of PromethION</a></li>
+            <li><a href="#identifier4">Iso-seq (PacBio), NovaSeq (RNA-seq) Configuration</a></li>
             
             
             
@@ -375,10 +376,186 @@
             
             </div>
 
+            <div class="row"><hr/></div>
+            <div id="identifier4"><h2>Iso-seq (PacBio), NovaSeq (RNA-seq) Configuration </h2></br>
             
+            <style>
+            table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            }
             
+            td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            }
             
-			  
+            tr:nth-child(even) {
+            background-color: #dddddd;
+            }
+            </style>
+            
+            <table>
+            <h3>Iso-seq (Long read PacBio) quotes</h3></br>
+            
+            <tr>
+            <th>Company/University</th>
+            <th>SMRT cells</th>
+            <th>Sequencing Costs</th>
+            <th>Comments</th>
+            </tr>
+            
+            <tr>
+            <td>University of Georgia</td>
+            <td>8M</td>
+            <td>$500 per library preparation</br>
+            $2500 per 8M SMRT cell sequencing</td>
+            <td>Accept Total RNA extracts</br>
+            Turnaround time  18-25 business days</td>
+            </tr>
+            
+            <tr>
+            <td>GENWIZ</td>
+            <td>1M</td>
+            <td>$1750 per library  preparation</br>
+            $1800 per 1M SMRT cell  sequencing</td>
+            <td>Accept either Total RNA extracts or Frozen cell pellets.</br>
+            Recommended quantities for the fresh frozen cell:</br>
+            2 tubes, each containing ≥10⁷ cells</br>
+            Turnaround time  18-25 business days</td>
+            </tr>
+            
+            <tr>
+            <td>UNIVERSITY of WISCONSIN–MADISON</td>
+            <td>1M</td>
+            <td>$3,885 for the first sample</br>
+            $550 for each additional sample</td>
+            <td>Accept Total RNA extracts</br>
+            (should be DNAse treated)</td>
+            </tr>
+            
+            <tr>
+            <td>Brigham Young University
+            <b>(Best offer)</b></td>
+            <td>1M and 8M</td>
+            <td>For PacBio</br>
+            $500 per library preparation</br>
+            $2300 per 8M SMRT cell sequencing</br>
+            $1800 per 1M SMRT cell sequencing</br>
+            </br>
+            For RNA-seq (Illumina HiSeq)</br>
+            $150 a sample for poly(A) library construction</br>
+            Each lane costs $2700</td>
+            <td>For PacBio</br>
+            600ng of Total RNA, ideally (from each group)</br>
+            Turnaround time  1-2 weeks</br>
+            </br>
+            For RNA-seq</br>
+            One lane of 2x125 high output HiSeq data generates approximately 500 million paired end reads (250 million in each direction)</td>
+            </tr>
+            
+            <tr>
+            <td>University of Washington</td>
+            <td>8M</td>
+            <td>$548 per library preparation</br>
+            $3,493.99 per 8M SMRT cell sequencing  </td>
+            <td>600ng of Total RNA, ideally (from each group)</br>
+            Turnaround time 5 - 6 weeks</td>
+            </tr>
+            
+            <tr>
+            <td>City of Hope</td>
+            <td>1M</td>
+            <td>$600 per library preparation</br>
+            $1570 per 1M SMRT cell sequencing  </td>
+            <td>Turnaround time 3 - 4 weeks</td>
+            </tr>
+            
+            <tr>
+            <td>Cold Spring Harbor Laboratory</td>
+            <td>8M</td>
+            <td>$614 per library preparation
+            $1860 per 8M SMRT cell sequencing</td>
+            <td>Turnaround time 2 months</td>
+            </tr>
+            </table>
+            
+            </br>
+            <p>
+            <b>General requirements for Total RNA extracts, per library (based on the Iso-seq protocols)</b></br>
+            <b>Sample volume: </b>At least 300ng of total RNA in a maximum of 7uL, per library.</br>
+            <b>RNA quality: </b>Intact RNA is essential. RIN (RNA integrity number) must be ≥7.0 (ideally ≥8.0).</br>
+            <b>Buffer:</b> RNA extracts should be in 10 mM Tris, pH 7.5-8.0. Water is okay if it is nuclease free, but buffer is preferred.
+            </p>
+            
+            </br>
+            <table>
+            <h3>NovaSeq (short read Illumina) quotes</h3></br>
+            
+            <tr>
+            <th>Company/University</th>
+            <th>Sequencing Machine</th>
+            <th>Sequencing Costs</th>
+            <th>Comments</th>
+            </tr>
+            
+            <tr>
+            <td>mrdnalab</td>
+            <td>S1 NovaSeq</td>
+            <td>$190 per library preparation (total price  with discount $3080)</br>
+            $9000 for sequencing 32 libraries(total cost $12,080)</td>
+            <td>Suggested Total RNA 500ng per replicate</br>
+            (can work with low amount as well)</br>
+            RIN >6.5</br>
+            Turnaround time  typically average 4 weeks</td>
+            </tr>
+            
+            <tr>
+            <td>Duke University</br>
+            <b>(Best offer)</b></td>
+            <td>S1 NovaSeq</td>
+            <td>$188 per library preparation</br>
+             $7,400 for sequencing 32 libraries
+             (total cost $13,416)</td>
+            <td>Suggested Total RNA 500ng per replicate</br>
+            (can work with low amount, e.g., 100 ng of Total RNA, as well)</br>
+            Turnaround time  typically average 4-5 weeks</br>
+            Turnaround time  18-25 business days</td>
+            </tr>
+            
+            <tr>
+            <td>University of Kansas Medical Center</td>
+            <td>S1 NovaSeq</td>
+            <td>$243.6 per library preparation</br>
+            $9,273 for sequencing 32 libraries
+            (total cost $17,081)</td>
+            <td>Standard RNA protocols require a minimum of 500ng of Total RNA. RNA must be DNAse treated to remove contaminating DNA prior to submission.
+            Also work with lower input (<100ng) or highly degraded (RIN<5) RNA</td>
+            </tr>
+            
+            <tr>
+            <td>University of Utah</td>
+            <td>S2 NovaSeq</td>
+            <td>$195 per library preparation</br>
+            $10,300.00 for sequencing 32 libraries
+            (total cost $16,540)</td>
+            <td>Turnaround time 3 weeks</td>
+            </tr>
+            
+            <tr>
+            <td>Indiana University</td>
+            <td>S1 NovaSeq</td>
+            <td>$265 per library preparation</br>
+            $6,884.58 for sequencing 32 libraries
+            (total cost $15,364)</td>
+            <td>Turnaround time one month</td>
+            </tr>
+    
+            </table>
+            
+            </div>
 			
 		</div>
 	</div>
