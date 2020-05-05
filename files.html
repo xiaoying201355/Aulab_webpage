@@ -112,9 +112,9 @@
             <li><a href="#identifier2">MeSMLR-seq followup: Nanopore PromethION</a></li>
             <li><a href="#identifier3">Sequencing data of PromethION</a></li>
             <li><a href="#identifier4">Iso-seq (PacBio), NovaSeq (RNA-seq) Configuration</a></li>
+            <li><a href="#identifier5">Quantifying the expression of transcripts by salmon version 1.0.0 and output count matrix by R</a></li>
             
-            
-            
+
             <div class="row"><hr/></div>
             </br>
             <div id="identifier1"><h2>Operation manual for identfiy novel gene and isoform based on Pacbio data</h2></br>
@@ -555,7 +555,121 @@
     
             </table>
             
+            
             </div>
+            
+            <div class="row"><hr/></div>
+            </br>
+            <div id="identifier5"><h2>Quantifying the expression of transcripts by salmon version 1.0.0 and output count matrix by R</h2></br>
+            </br>
+            <h3>Input files:</h3></br>
+            <ul>
+            
+            <li>Annotation (Annotation is only for version higher than 1.0 plus versions. OSC installed salmon v.1.0.0. The latest version of salmon is 1.2.0. In this case, we only use version 1.0.0):</li>
+            </br>
+            <pre>
+            <code>
+            wget ftp://ftp.ensembl.org/pub/release-99/gtf/homo_sapiens//Homo_sapiens.GRCh38.99.gtf.gz
+            </code>
+            </pre>
+            </br>
+            
+            <li>Transcriptomes (Ensembl):</li>
+            </br>
+            <pre>
+            <code>
+            wget ftp://ftp.ensembl.org/pub/release-99/fasta/homo_sapiens//cdna/Homo_sapiens.GRCh38.cdna.all.fa.gz
+            </code>
+            </pre>
+            </br>
+            
+            <li>Reads (you can quantify any set of reads, say paired-end reads):
+            </li>
+            </br>
+            <pre>
+            <code>
+            X5608_GuoD_GBM30-con1_V1N_1_S1_L001_R1_001.fastq.gz</br>
+            X5608_GuoD_GBM30-con1_V1N_1_S1_L001_R2_001.fastq.gz
+            </code>
+            </pre>
+            </br>
+            </ul>
+            
+            </br>
+            <h3>Running Salmon 1.0.0:</h3></br>
+            
+            <pre>
+            <code>
+            module load salmon/1.0.0
+            </code>
+            </pre>
+            </br>
+            
+            </br>
+            <h3>Prepare index for Salmon:</h3></br>
+            
+            <pre>
+            <code>
+            salmon index -t Homo_sapiens.GRCh38.cdna.all.fa -i transcripts_index
+            </code>
+            </pre>
+            </br>
+            
+            </br>
+            <h3>Quantifying:</h3></br>
+            
+            <pre>
+            <code>
+            salmon quant -i transcripts_index -l A -1 X5608_GuoD_GBM30-con1_V1N_1_S1_L001_R1_001.fastq -2 X5608_GuoD_GBM30-con1_V1N_1_S1_L001_R2_001.fastq  --validateMappings -o /fs/project/PCON0005/data/DLG_RNA-seq/191018-transfer/X5608_transcripts_quant
+            
+            </code>
+            </pre>
+            Notice: " -l/libType " means library type; "A" allows salmon automatically infer library type for you; see more detail on <a href="https://salmon.readthedocs.io/en/latest/salmon.html#what-s-this-libtype">salmon official website</a>.
+            
+            </br>
+            </br>
+            </br>
+            <h3>Output files:</h3></br>
+            For each read, salmon will output a folder. The files in that folder are showed below:</br>
+            <pre>
+            <code>
+            aux_info  cmd_info.json  lib_format_counts.json  libParams  logs  quant.sf
+            </code>
+            </pre>
+            </br>
+            We need to collect quant.sf file for read counts. This is what quant.sf file looks like. The last column is read counts.
+            </br>
+            <pre>
+            <code>
+            Name    Length  EffectiveLength TPM     NumReads
+            ENST00000434970.2       9       10.000  0.000000        0.000
+            ENST00000415118.1       8       9.000   0.000000        0.000
+            ENST00000448914.1       13      14.000  0.000000        0.000
+            </code>
+            </pre>
+            </br>
+            Download all the quant.sf files for your reads, put all sf files into a new folder, in this case “quant”.
+            Open RStudio to combine all read counts, R code is below:
+            <pre>
+            <code>
+            dir <- "/Users/yuruwang/Desktop/quant" # path of files </br>
+            filename <- list.files(dir) # list files in this path </br>
+            files <- file.path(dir, filename) # store path for each file </br>
+            all(file.exists(files)) # check files exists or not </br>
+            lst <- lapply(files, read.table, header=TRUE, stringsAsFactors=FALSE) </br>
+            # store files into a list </br>
+            
+            count <- lapply(lst, "[", c("Name", “NumReads”)) # keep only ID and read counts </br>
+            res <- do.call(cbind, count) # because the order of ID are same for each sf file, combine the columns of each file. </br>
+            colnames(res)[1] <- “Isoform" </br>
+            r <- res[,-grep("\\Name$", colnames(res))] # remove all ID column except the first column(Isoform ID) </br>
+            colnames(r)[-1] <- filename </br>
+            write.csv(r,file = "all_counts.csv",row.names = FALSE) </br>
+            </code>
+            </pre>
+            </br>
+            You can then use DESeq2 or Limma-Voom do differential expression analysis. They are R packages. Please take a look of <a href="http://bioconductor.org/packages/release/bioc/vignettes/DESeq2/inst/doc/DESeq2.html#countmat">DESeq2</a> and <a href="https://ucdavis-bioinformatics-training.github.io/2018-June-RNA-Seq-Workshop/thursday/DE.html">Limma-Voom</a> examples.
+            </br>
 			
 		</div>
 	</div>
