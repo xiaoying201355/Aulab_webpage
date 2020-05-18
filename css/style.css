@@ -639,7 +639,7 @@ span.hovicon:before {
 	font-size:10px;
 }
 .accordation_menu input:checked ~ div.content1 {
-  height:51px;
+  height:300px;
   margin: 10px 0px 10px 25px;
 }
 /*** For Change Animation Effects ****/
@@ -1708,10 +1708,12 @@ span.ban-line {
 .people-main p {
     width: 75%;
 }
+
 .new-pic1 {
-    float: left;
-    width: 50%;
+    float:left;
+    width: 18%;
 }
+
 .news-left {
     padding-bottom: 3em;
 }
@@ -2232,17 +2234,16 @@ i.wel-num {
 .people {
     min-height: 230px;
 }
+.news_row::after{
+    content: "";
+    clear: both;
+    display: table;
+}
 .news-left {
     padding-bottom: 2em;
 }
 .new-pic1 {
-    padding: 0px 0px 0px 10px;
-}
-.new-pic3 {
-    padding: 0px 0px 0px 10px;
-}
-.new-pic4 {
-    padding: 0px 0px 0px 10px;
+    padding: 5px;
 }
 .resp-tabs-list {
     margin: 1.5em auto 0;
@@ -2337,7 +2338,7 @@ span.m_5 {
     padding: 1.5em 0em 1.5em 0em;
 }
 .news-left {
-    padding-bottom: 1.5em;
+    padding-bottom: 0em;
 }
 .testimonial {
     padding: 1em 0em;
